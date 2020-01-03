@@ -19,7 +19,7 @@ public class CrossOne2OneEncoder implements FeatureEncoderIntf,java.io.Serializa
     }
 
     @Override
-    public Object encode(Object x1, Object x2) {
+    public Object encode(Object x1, Object x2) throws Exception{
         if(x1.equals(x2)){
             return this.featureStartIndex+feature1.getOffset(x1);
         }
@@ -36,8 +36,4 @@ public class CrossOne2OneEncoder implements FeatureEncoderIntf,java.io.Serializa
         return feature1.getFeatureLen();
     }
 
-    @Override
-    public int getFeatureStartIndex() {
-        return this.featureStartIndex;
-    }
 }

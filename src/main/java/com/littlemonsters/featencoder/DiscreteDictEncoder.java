@@ -57,11 +57,4 @@ public class DiscreteDictEncoder implements FeatureEncoderIntf, java.io.Serializ
         }
 
     }
-    public int getFeatureStartIndex() {
-        if(encodeSingle){
-            return this.featureStartIndex;
-        }else{
-            return -1;
-        }
-    }
 }
