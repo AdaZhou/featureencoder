@@ -1,0 +1,13 @@
+u_c1,dict,not_encode_single
+u_c3,dict,not_encode_single
+u_c2,dict,not_encode_single
+u_tags,dict,not_encode_single
+sku_c1,dict
+sku_c2,dict
+sku_c3,dict
+sku_keyword,dict
+sku_upc,dict
+sku_is_spu,dict
+sale_w1,num
+sale_m1,num
+expose_d1,num
