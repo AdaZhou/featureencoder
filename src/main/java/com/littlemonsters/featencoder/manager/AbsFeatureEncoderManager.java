@@ -19,10 +19,16 @@ public abstract class AbsFeatureEncoderManager implements Serializable {
     private static String CROSS_TYPE_M2M="m2m";
     protected Map<String, FeatureEncoderIntf> featureName2conf=new HashMap<>();
     protected List<String[]> crossFeature=new ArrayList<>();
+    protected List<String> feat=new ArrayList<>();
     protected int featureStartIndex=0;
     public abstract void loadCrossEncoderConfig() throws Exception;
     public abstract void loadEncoderConfig()throws Exception;
-
+    public List<String> getFeat(){
+        return feat;
+    }
+    public List<String[]> getCrossFeat(){
+        return crossFeature;
+    }
     public Object encode(String featureName, Object featureValue) throws Exception{
         return featureName2conf.get(featureName).encode(featureValue);
     }
@@ -102,7 +108,7 @@ public abstract class AbsFeatureEncoderManager implements Serializable {
                     encode_single=false;
                 }
             }
-
+            feat.add(featureName);
             if(featureType.equals("num")){
                 System.out.println("----------featureStartIndex is "+featureStartIndex);
                 NumericEncoder config=NumericEncoder.loadConf(getAtomEncoderConfig(featureName),featureStartIndex,encode_single);
