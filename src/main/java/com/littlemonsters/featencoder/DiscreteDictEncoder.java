@@ -31,19 +31,23 @@ public class DiscreteDictEncoder implements FeatureEncoderIntf, java.io.Serializ
     }
 
     @Override
-    public Object encode(Object x1, Object x2) {
+    public Object[] encode(Object x1, Object x2) {
         return null;
     }
 
     @Override
-    public Object encode(Object x) {
+    public Object[] encode(Object x) {
         if(encodeSingle) {
+            Object[] encoder=new Object[2];
             String y = (String) x;
             Integer offset = words2offset.get(y);
             if (offset != null) {
-                return featureStartIndex + offset+":1";
+                encoder[0]=featureStartIndex + offset;
+                encoder[1]=1;
             }
-            return featureStartIndex + this.words2offset.size()+":1";
+            encoder[0]=featureStartIndex + this.words2offset.size();
+            encoder[1]=1;
+            return encoder;
         }else{
             return null;
         }

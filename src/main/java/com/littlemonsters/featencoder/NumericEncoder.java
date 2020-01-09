@@ -36,24 +36,34 @@ public class NumericEncoder implements FeatureEncoderIntf, java.io.Serializable{
         return conf;
     }
 
-    public Object encode(Object x){
+    public Object[] encode(Object x){
+        Object[] encoder=new Object[2];
         if(this.encodeSingle){
             if(splitPoints.size()>0){
                 if(x.toString().equals("NULL")||x.toString().equals("\\N")){
-                    return featureStartIndex+splitPoints.size()+":1";
+                    encoder[0]=featureStartIndex+splitPoints.size();
+                    encoder[1]=1;
+
                 }
                 double y=(Double)x;
                 int offset=-1;
                 for(Double[] d: splitPoints){
                     offset++;
                     if(y>d[0] && y<d[1]){
-                        return featureStartIndex+offset+":1";
+                        encoder[0]=featureStartIndex+offset;
+                        encoder[1]=1;
+
                     }
                 }
-                return featureStartIndex+splitPoints.size()+":1";
+                encoder[0]=featureStartIndex+splitPoints.size();
+                encoder[1]=1;
+
             }else{
-                return featureStartIndex+":"+x;
+                encoder[0]=featureStartIndex;
+                encoder[1]=x;
+
             }
+            return encoder;
         }
             return null;
 
@@ -79,7 +89,7 @@ public class NumericEncoder implements FeatureEncoderIntf, java.io.Serializable{
 
     }
     @Override
-    public Object encode(Object x1, Object x2) {
+    public Object[] encode(Object x1, Object x2) {
         return null;
     }
 

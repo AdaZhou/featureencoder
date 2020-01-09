@@ -19,15 +19,16 @@ public class CrossOne2OneEncoder implements FeatureEncoderIntf,java.io.Serializa
     }
 
     @Override
-    public Object encode(Object x1, Object x2) throws Exception{
+    public Object[] encode(Object x1, Object x2) throws Exception{
         if(x1.equals(x2)){
-            return (this.featureStartIndex+feature1.getOffset(x1))+":1";
+            Object[] encoder=new Object[]{this.featureStartIndex+feature1.getOffset(x1),1};
+            return encoder;
         }
         return null;
     }
 
     @Override
-    public Object encode(Object x) {
+    public Object[] encode(Object x) {
        return null;
     }
 

@@ -19,12 +19,15 @@ public class HashEncoder implements FeatureEncoderIntf, java.io.Serializable{
     }
 
     @Override
-    public Object encode(Object x) throws Exception{
-        return this.featureStartIndex+Math.abs(hf.hashBytes(MiscUtils.serialize(x)).hashCode())%maxrange+":1";
+    public Object[] encode(Object x) throws Exception{
+        Object[] encoder=new Object[2];
+        encoder[0]=this.featureStartIndex+Math.abs(hf.hashBytes(MiscUtils.serialize(x)).hashCode())%maxrange;
+        encoder[1]=1;
+        return encoder;
     }
 
     @Override
-    public Object encode(Object x1, Object x2) {
+    public Object[] encode(Object x1, Object x2) {
         return null;
     }
 
