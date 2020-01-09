@@ -20,7 +20,7 @@ public class HashEncoder implements FeatureEncoderIntf, java.io.Serializable{
 
     @Override
     public Object encode(Object x) throws Exception{
-        return this.featureStartIndex+Math.abs(hf.hashBytes(MiscUtils.serialize(x)).hashCode())%maxrange;
+        return this.featureStartIndex+Math.abs(hf.hashBytes(MiscUtils.serialize(x)).hashCode())%maxrange+":1";
     }
 
     @Override
@@ -40,10 +40,8 @@ public class HashEncoder implements FeatureEncoderIntf, java.io.Serializable{
 
     @Override
     public int getOffset(Object x) throws Exception{
-        if(encodeSingle){
-            return Math.abs(hf.hashBytes(MiscUtils.serialize(x)).hashCode())%maxrange;
-        }else{
-            return -1;
-        }
+
+        return Math.abs(hf.hashBytes(MiscUtils.serialize(x)).hashCode())%maxrange;
+
     }
 }

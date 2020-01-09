@@ -40,19 +40,19 @@ public class NumericEncoder implements FeatureEncoderIntf, java.io.Serializable{
         if(this.encodeSingle){
             if(splitPoints.size()>0){
                 if(x.toString().equals("NULL")||x.toString().equals("\\N")){
-                    return featureStartIndex+splitPoints.size();
+                    return featureStartIndex+splitPoints.size()+":1";
                 }
                 double y=(Double)x;
                 int offset=-1;
                 for(Double[] d: splitPoints){
                     offset++;
                     if(y>d[0] && y<d[1]){
-                        return featureStartIndex+offset;
+                        return featureStartIndex+offset+":1";
                     }
                 }
-                return featureStartIndex+splitPoints.size();
+                return featureStartIndex+splitPoints.size()+":1";
             }else{
-                return x;
+                return featureStartIndex+":"+x;
             }
         }
             return null;

@@ -26,7 +26,7 @@ public class CrossMany2ManyEncoder implements FeatureEncoderIntf,java.io.Seriali
         int index1=feature1.getOffset(x1);
         int index2=feature2.getOffset(x2);
         //if(index1>0&&index2>0){
-            return featureStartIndex+index1*feature2.getFeatureLen()+index2;
+            return (featureStartIndex+index1*feature2.getFeatureLen()+index2)+":1";
         //}
         //return -1;
     }

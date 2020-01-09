@@ -41,9 +41,9 @@ public class DiscreteDictEncoder implements FeatureEncoderIntf, java.io.Serializ
             String y = (String) x;
             Integer offset = words2offset.get(y);
             if (offset != null) {
-                return featureStartIndex + offset;
+                return featureStartIndex + offset+":1";
             }
-            return featureStartIndex + this.words2offset.size();
+            return featureStartIndex + this.words2offset.size()+":1";
         }else{
             return null;
         }
