@@ -29,10 +29,10 @@ public abstract class AbsFeatureEncoderManager implements Serializable {
     public List<String[]> getCrossFeat(){
         return crossFeature;
     }
-    public Object encode(String featureName, Object featureValue) throws Exception{
+    public Object[] encode(String featureName, Object featureValue) throws Exception{
         return featureName2conf.get(featureName).encode(featureValue);
     }
-    public Object encodeCross(String featureName1,Object featureValue1,
+    public Object[] encodeCross(String featureName1,Object featureValue1,
                                      String featureName2,Object featureValue2)throws Exception{
 
         if(featureName2conf.containsKey(featureName1+","+featureName2+",o2o")||
@@ -52,7 +52,7 @@ public abstract class AbsFeatureEncoderManager implements Serializable {
                 return featureName2conf.get(featureName2+","+featureName1+",m2m").encode(featureValue2,featureValue1);
             }
         }else{
-            return -1;
+            return null;
         }
 
     }
