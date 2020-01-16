@@ -102,8 +102,8 @@ public abstract class AbsFeatureEncoderManager implements Serializable {
             String featureName=fields[0];
             String featureType=fields[1];
             boolean encode_single=true;
-            if(fields.length==5){
-                String encodeSingle=fields[4];
+            if(fields.length==3){
+                String encodeSingle=fields[2];
                 if(encodeSingle.equals("not_encode_single")){
                     encode_single=false;
                 }
