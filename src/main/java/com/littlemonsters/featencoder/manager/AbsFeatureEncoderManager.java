@@ -111,7 +111,7 @@ public abstract class AbsFeatureEncoderManager implements Serializable {
             feat.add(featureName);
             if(featureType.equals("num")){
                 System.out.println("----------featureStartIndex is "+featureStartIndex);
-                NumericEncoder config=NumericEncoder.loadConf(getAtomEncoderConfig(featureName),featureStartIndex,encode_single);
+                NumericSplitEncoder config= NumericSplitEncoder.loadConf(getAtomEncoderConfig(featureName),featureStartIndex,encode_single);
                 featureStartIndex=featureStartIndex+config.getFeatureLen();
                 featureName2conf.put(featureName,config);
 
@@ -128,6 +128,24 @@ public abstract class AbsFeatureEncoderManager implements Serializable {
                 HashEncoder config=new HashEncoder( maxrange,encode_single,featureStartIndex);
                 featureStartIndex = featureStartIndex + config.getFeatureLen();
                 featureName2conf.put(featureName, config);
+            }else if(featureType.contains("z-score")){
+                System.out.println("----------featureStartIndex is "+featureStartIndex);
+                String[] info=featureType.split("_");
+                Map<String,String> param=new HashMap<>();
+                param.put("mean",info[0]);
+                param.put("std",info[1]);
+                NumericEncoder encoder=new NumericEncoder(featureStartIndex,"z-score",param,encode_single);
+                featureStartIndex = featureStartIndex + encoder.getFeatureLen();
+                featureName2conf.put(featureName, encoder);
+            }else if(featureType.contains("max-min")){
+                System.out.println("----------featureStartIndex is "+featureStartIndex);
+                String[] info=featureType.split("_");
+                Map<String,String> param=new HashMap<>();
+                param.put("max",info[0]);
+                param.put("min",info[1]);
+                NumericEncoder encoder=new NumericEncoder(featureStartIndex,"max-min",param,encode_single);
+                featureStartIndex = featureStartIndex + encoder.getFeatureLen();
+                featureName2conf.put(featureName, encoder);
             }
         }
     }
