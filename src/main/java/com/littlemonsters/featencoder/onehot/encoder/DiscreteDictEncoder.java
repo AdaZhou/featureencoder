@@ -1,4 +1,4 @@
-package com.littlemonsters.featencoder;
+package com.littlemonsters.featencoder.onehot.encoder;
 
 import java.util.HashMap;
 import java.util.List;

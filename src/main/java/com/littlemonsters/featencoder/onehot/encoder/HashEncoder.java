@@ -1,4 +1,4 @@
-package com.littlemonsters.featencoder;
+package com.littlemonsters.featencoder.onehot.encoder;
 
 import com.google.common.hash.HashFunction;
 import com.google.common.hash.Hashing;

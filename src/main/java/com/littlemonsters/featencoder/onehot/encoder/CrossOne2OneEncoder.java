@@ -1,4 +1,4 @@
-package com.littlemonsters.featencoder;
+package com.littlemonsters.featencoder.onehot.encoder;
 
 public class CrossOne2OneEncoder implements FeatureEncoderIntf,java.io.Serializable{
 

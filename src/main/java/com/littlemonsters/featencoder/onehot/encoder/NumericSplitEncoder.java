@@ -1,4 +1,4 @@
-package com.littlemonsters.featencoder;
+package com.littlemonsters.featencoder.onehot.encoder;
 
 
 

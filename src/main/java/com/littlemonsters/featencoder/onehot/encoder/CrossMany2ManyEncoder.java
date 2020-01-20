@@ -1,4 +1,4 @@
-package com.littlemonsters.featencoder;
+package com.littlemonsters.featencoder.onehot.encoder;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

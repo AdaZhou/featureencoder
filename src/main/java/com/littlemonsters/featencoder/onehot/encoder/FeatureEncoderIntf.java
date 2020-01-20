@@ -1,4 +1,4 @@
-package com.littlemonsters.featencoder;
+package com.littlemonsters.featencoder.onehot.encoder;
 
 public interface FeatureEncoderIntf {
     Object[] encode(Object x) throws Exception;
