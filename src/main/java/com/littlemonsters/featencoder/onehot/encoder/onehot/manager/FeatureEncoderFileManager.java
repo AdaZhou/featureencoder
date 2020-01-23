@@ -10,7 +10,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class FeatureEncoderFileManager extends AbsFeatureEncoderManager {
+
     private final static Logger logger = LoggerFactory.getLogger(FeatureEncoderFileManager.class);
+    private static final long serialVersionUID = -6541574949640023706L;
     private String rootPath;
     private String encoderConfPath="atom_encoder_conf";
     private String crossFeatureFileName="cross_encoder_conf";

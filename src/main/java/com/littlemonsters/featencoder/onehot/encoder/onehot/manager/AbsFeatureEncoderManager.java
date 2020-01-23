@@ -3,6 +3,7 @@ package com.littlemonsters.featencoder.onehot.encoder.onehot.manager;
 
 
 import com.littlemonsters.featencoder.onehot.encoder.*;
+import com.littlemonsters.featencoder.replace.encoder.NumericEncoder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -128,7 +129,7 @@ public abstract class AbsFeatureEncoderManager implements Serializable {
                 HashEncoder config=new HashEncoder( maxrange,encode_single,featureStartIndex);
                 featureStartIndex = featureStartIndex + config.getFeatureLen();
                 featureName2conf.put(featureName, config);
-            }else if(featureType.contains("z-score")){
+            }/*else if(featureType.contains("z-score")){
                 System.out.println("----------featureStartIndex is "+featureStartIndex);
                 String[] info=featureType.split("_");
                 Map<String,String> param=new HashMap<>();
@@ -146,7 +147,7 @@ public abstract class AbsFeatureEncoderManager implements Serializable {
                 NumericEncoder encoder=new NumericEncoder(featureStartIndex,"max-min",param,encode_single);
                 featureStartIndex = featureStartIndex + encoder.getFeatureLen();
                 featureName2conf.put(featureName, encoder);
-            }
+            }*/
         }
     }
 }
